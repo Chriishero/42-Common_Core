@@ -1,20 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cvillene <cvillene@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/04 06:21:20 by cvillene          #+#    #+#             */
-/*   Updated: 2025/11/05 10:12:46 by cvillene         ###   ########.fr       */
+/*   Created: 2025/11/05 10:10:58 by cvillene          #+#    #+#             */
+/*   Updated: 2025/11/05 10:26:58 by cvillene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stddef.h>
+#include <stdlib.h>
 
-size_t	ft_strlen(const char *s)
+int	ft_strlen(const char *s)
 {
-	size_t	i;
+	int	i;
 
 	i = 0;
 	while (s[i])
@@ -22,30 +22,31 @@ size_t	ft_strlen(const char *s)
 	return (i);
 }
 
-size_t	ft_strlcpy(char *dst, const char *src, size_t size)
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	size_t	src_len;
-	size_t	i;
+	char	*new_str;
+	int		i;
 
-	src_len = ft_strlen(src);
-	if (size == 0)
-		return (src_len);
+	new_str = (char *)malloc((ft_strlen(s) + 1) * sizeof(char));
+	if (!new_str)
+		return (NULL);
 	i = 0;
-	while (i < size - 1 && src[i])
+	while (s[i])
 	{
-		dst[i] = src[i];
+		new_str[i] = (*f)(i, s[i]);
 		i++;
 	}
-	dst[i] = '\0';
-	return (src_len);
+	return (new_str);
 }
 /*
 #include <stdio.h>
-int	main()
+char    ft_changeChar(unsigned int idx, char c)
 {
-	char	s1[10];
-	char	*s2 = "woooorld";
-	
-	ft_strlcpy(s1, s2, sizeof(s1) - 4);
-	printf("%s", s1);
+    if (idx % 2 == 0)
+        return (c - 32);
+    return (c);
+}
+int main()
+{
+    printf("%s", ft_strmapi("hello world", &ft_changeChar));
 }*/

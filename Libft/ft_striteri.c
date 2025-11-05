@@ -1,20 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*   ft_striteri.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cvillene <cvillene@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/04 06:21:20 by cvillene          #+#    #+#             */
-/*   Updated: 2025/11/05 10:12:46 by cvillene         ###   ########.fr       */
+/*   Created: 2025/11/05 10:27:17 by cvillene          #+#    #+#             */
+/*   Updated: 2025/11/05 10:37:51 by cvillene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stddef.h>
-
-size_t	ft_strlen(const char *s)
+int	ft_strlen(const char *s)
 {
-	size_t	i;
+	int	i;
 
 	i = 0;
 	while (s[i])
@@ -22,30 +20,27 @@ size_t	ft_strlen(const char *s)
 	return (i);
 }
 
-size_t	ft_strlcpy(char *dst, const char *src, size_t size)
+void    ft_striteri(char *s, void (*f)(unsigned int, char*))
 {
-	size_t	src_len;
-	size_t	i;
+	int		i;
 
-	src_len = ft_strlen(src);
-	if (size == 0)
-		return (src_len);
 	i = 0;
-	while (i < size - 1 && src[i])
+	while (s[i])
 	{
-		dst[i] = src[i];
+		(*f)(i, &s[i]);
 		i++;
 	}
-	dst[i] = '\0';
-	return (src_len);
 }
-/*
+
 #include <stdio.h>
-int	main()
+void    ft_changeChar(unsigned int idx, char *c)
 {
-	char	s1[10];
-	char	*s2 = "woooorld";
-	
-	ft_strlcpy(s1, s2, sizeof(s1) - 4);
-	printf("%s", s1);
-}*/
+    if (idx % 2 == 0)
+        *c -= 32;
+}
+int main()
+{
+    char    *s = "hello world";
+    ft_striteri(s, &ft_changeChar);
+    printf("%s", s);
+}

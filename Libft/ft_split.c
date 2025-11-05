@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cvillene <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: cvillene <cvillene@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/05 06:25:42 by cvillene          #+#    #+#             */
-/*   Updated: 2025/11/05 07:08:49 by cvillene         ###   ########.fr       */
+/*   Updated: 2025/11/05 10:12:45 by cvillene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,22 +47,22 @@ int	ft_strlen(const char *s)
 	return (i);
 }
 
-size_t	ft_strcpy(char *dst, const char *src)
+size_t	ft_strlcpy(char *dst, const char *src, size_t size)
 {
+	size_t	src_len;
 	size_t	i;
-	size_t	j;
 
+	src_len = ft_strlen(src);
+	if (size == 0)
+		return (src_len);
 	i = 0;
-	while (src[i])
-		i++;
-	j = 0;
-	while (src[j])
+	while (i < size - 1 && src[i])
 	{
-		*dst++ = src[j];
-		j++;
+		dst[i] = src[i];
+		i++;
 	}
-	*dst = '\0';
-	return (i);
+	dst[i] = '\0';
+	return (src_len);
 }
 
 char	*ft_getword(const char **s, char delimiter, int *size)
