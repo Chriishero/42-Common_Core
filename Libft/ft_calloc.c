@@ -1,0 +1,58 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: cvillene <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/11/04 09:54:44 by cvillene          #+#    #+#             */
+/*   Updated: 2025/11/05 05:48:26 by cvillene         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <stdlib.h>
+
+void	*ft_memset(void *s, int c, size_t n)
+{
+	unsigned char	*ptr;
+
+	ptr = s;
+	if (!ptr)
+		return (s);
+	while (n > 0)
+	{
+		*ptr = c;
+		ptr++;
+		n--;
+	}
+	return (s);
+}
+
+void	*ft_calloc(size_t nmemb, size_t size)
+{
+	void	*buffer;
+
+	if (nmemb == 0 || size == 0)
+		return (NULL);
+	buffer = malloc(nmemb * size);
+	if (!buffer)
+		return (buffer = NULL);
+	ft_memset(buffer, 0, nmemb);
+	return (buffer);
+}
+/*
+#include <stdio.h>
+int	main()
+{
+	int n = 10;
+	int *tab = (int *)ft_calloc(n, sizeof(int));
+	for (int i = 0; i < n; i++)
+		printf("%d", tab[i]);
+	for (int i = 0; i < n - 1; i++)
+		tab[i] = i;
+	printf("\n");
+	for (int i = 0; i < n; i++)
+		printf("%d", tab[i]);
+	free(tab);
+	return (0);
+}*/
