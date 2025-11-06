@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cvillene <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: cvillene <cvillene@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/05 05:58:38 by cvillene          #+#    #+#             */
-/*   Updated: 2025/11/05 06:24:19 by cvillene         ###   ########.fr       */
+/*   Updated: 2025/11/06 06:40:53 by cvillene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include "libft.h"
 
 int	ft_trimedstrlen(const char *s1, const char *set)
 {

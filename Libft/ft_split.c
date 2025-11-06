@@ -6,11 +6,11 @@
 /*   By: cvillene <cvillene@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/05 06:25:42 by cvillene          #+#    #+#             */
-/*   Updated: 2025/11/05 10:12:45 by cvillene         ###   ########.fr       */
+/*   Updated: 2025/11/06 06:53:53 by cvillene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include "libft.h"
 
 int	ft_countword(const char *s, char delimiter)
 {
@@ -35,34 +35,6 @@ int	ft_countword(const char *s, char delimiter)
 	if (isword == 0)
 		count++;
 	return (count);
-}
-
-int	ft_strlen(const char *s)
-{
-	int	i;
-
-	i = 0;
-	while (s[i])
-		i++;
-	return (i);
-}
-
-size_t	ft_strlcpy(char *dst, const char *src, size_t size)
-{
-	size_t	src_len;
-	size_t	i;
-
-	src_len = ft_strlen(src);
-	if (size == 0)
-		return (src_len);
-	i = 0;
-	while (i < size - 1 && src[i])
-	{
-		dst[i] = src[i];
-		i++;
-	}
-	dst[i] = '\0';
-	return (src_len);
 }
 
 char	*ft_getword(const char **s, char delimiter, int *size)

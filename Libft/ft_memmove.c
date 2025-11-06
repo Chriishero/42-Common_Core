@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cvillene <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: cvillene <cvillene@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/04 05:34:50 by cvillene          #+#    #+#             */
-/*   Updated: 2025/11/04 06:39:04 by cvillene         ###   ########.fr       */
+/*   Updated: 2025/11/06 07:11:23 by cvillene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stddef.h>
+#include "libft.h"
 
 char	*ft_strncpy(char *dest, char *src, size_t n)
 {
-	int	i;
+	size_t	i;
 
 	i = 0;
 	while (i < n && src[i])
@@ -26,17 +26,41 @@ char	*ft_strncpy(char *dest, char *src, size_t n)
 	return (dest);
 }
 
+// void	*ft_memmove(void *dest, void *src, size_t n)
+// {
+// 	char	*temp;
+// 	char	*src_cpy;
+// 	char	*p_dest;
+
+// 	p_dest = dest;
+// 	temp = src;
+// 	ft_strncpy(src_cpy, temp, n);
+// 	while (n-- > 0)
+// 		*p_dest++ = *src_cpy++;
+// 	return (dest);
+// }
 void	*ft_memmove(void *dest, void *src, size_t n)
 {
-	char	*temp;
-	char	*src_cpy;
-	char	*p_dest;
+	unsigned char	*ptr_d;
+	unsigned char	*ptr_s;
+	size_t			i;
 
-	p_dest = dest;
-	temp = src;
-	ft_strncpy(src_cpy, temp, n);
-	while (n-- > 0)
-		*p_dest++ = *src_cpy++;
+	if (!dest || !src)
+		return (NULL);
+	ptr_d = (unsigned char *)dest;
+	ptr_s = (unsigned char *)src;
+	if (ptr_s > ptr_d)
+	{
+		i = -1;
+		while (++i < n)
+			ptr_d[i] = ptr_s[i];
+	}
+	else if (ptr_d > ptr_s)
+	{
+		i = n + 1;
+		while (--i > 0)
+			ptr_d[i - 1] = ptr_s[i - 1];
+	}
 	return (dest);
 }
 /*
