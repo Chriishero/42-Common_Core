@@ -6,7 +6,7 @@
 /*   By: cvillene <cvillene@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/04 08:59:11 by cvillene          #+#    #+#             */
-/*   Updated: 2025/11/06 06:42:33 by cvillene         ###   ########.fr       */
+/*   Updated: 2025/11/06 08:55:18 by cvillene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,6 @@ int	main()
 	char data1[] = { 10, 20, 30, 40, 50, 60, 70, 80, 90 };
 	char data2[] = { 10, 20, 32, 40, 54, 60, 70, 80, 90 };
 
-       	printf("%d", ft_memcmp(data1, data2, 3));
+    printf("%d", ft_memcmp(data1, data2, 3));
 	return (0);
 }*/

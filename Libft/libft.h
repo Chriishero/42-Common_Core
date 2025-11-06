@@ -6,7 +6,7 @@
 /*   By: cvillene <cvillene@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/06 06:38:23 by cvillene          #+#    #+#             */
-/*   Updated: 2025/11/06 06:41:57 by cvillene         ###   ########.fr       */
+/*   Updated: 2025/11/06 08:13:55 by cvillene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 int		ft_isalpha(int c);
 int		ft_isdigit(char c);
 int		ft_isalnum(char c);
-int		ft_isacii(char c);
+int		ft_isascii(char c);
 int		ft_isprint(char c);
 int		ft_strlen(char *str);
 void	*ft_memset(void *s, int c, size_t n);

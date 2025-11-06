@@ -6,7 +6,7 @@
 /*   By: cvillene <cvillene@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/03 12:03:14 by cvillene          #+#    #+#             */
-/*   Updated: 2025/11/06 06:41:13 by cvillene         ###   ########.fr       */
+/*   Updated: 2025/11/06 08:16:40 by cvillene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,5 +19,5 @@ int	ft_strlen(char *str)
 	i = 0;
 	while (str[i])
 		i++;
-	return (i - 1);
+	return (i);
 }

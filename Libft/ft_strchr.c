@@ -6,7 +6,7 @@
 /*   By: cvillene <cvillene@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/04 07:25:05 by cvillene          #+#    #+#             */
-/*   Updated: 2025/11/06 06:41:33 by cvillene         ###   ########.fr       */
+/*   Updated: 2025/11/06 08:45:45 by cvillene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,4 +30,5 @@ char	*ft_strchr(const char *s, int c)
 int	main()
 {
 	printf("%s", ft_strchr("bondour", 'i'));
+	return (0);
 }*/

@@ -6,7 +6,7 @@
 /*   By: cvillene <cvillene@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/04 08:34:53 by cvillene          #+#    #+#             */
-/*   Updated: 2025/11/06 06:42:37 by cvillene         ###   ########.fr       */
+/*   Updated: 2025/11/06 08:53:48 by cvillene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,8 @@ int	main()
 	char data[] = { 10, 20, 30, 40, 50, 60, 70, 80, 90 };
 	const unsigned int size = 10;
 
-       	void * found = ft_memchr( data, 57, size );
-    	printf( "57 %s\n", ( found != NULL ? "ya" : "nah" ) );
+    void * found = ft_memchr( data, 57, size );
+    printf( "57 %s\n", ( found != NULL ? "ya" : "nah" ) );
 	found = ft_memchr( data, 50, size );
 	printf( "50 %s\n", ( found != NULL ? "ya" : "nah" ) );
 	if ( found != NULL ) {

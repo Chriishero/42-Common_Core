@@ -6,7 +6,7 @@
 /*   By: cvillene <cvillene@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/04 06:21:20 by cvillene          #+#    #+#             */
-/*   Updated: 2025/11/06 06:57:42 by cvillene         ###   ########.fr       */
+/*   Updated: 2025/11/06 08:35:40 by cvillene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,6 @@ int	main()
 	char	s1[10];
 	char	*s2 = "woooorld";
 	
-	ft_strlcpy(s1, s2, sizeof(s1) - 4);
+	printf("%zu\n", ft_strlcpy(s1, s2, sizeof(s1) - 4));
 	printf("%s", s1);
 }*/
