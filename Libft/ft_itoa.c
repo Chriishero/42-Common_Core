@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-int	ft_nbrlen(int n)
+static int	ft_nbrlen(int n)
 {
 	int	i;
 
@@ -45,6 +45,7 @@ char	*ft_itoa(int n)
 		value[0] = '-';
 		n *= -1;
 	}
+	value[n_len + 1] = '\0';
 	while (n_len >= 0 && n > 0)
 	{
 		value[n_len] = n % 10 + '0';

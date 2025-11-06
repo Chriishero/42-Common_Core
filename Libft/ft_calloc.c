@@ -16,12 +16,10 @@ void	*ft_calloc(size_t nmemb, size_t size)
 {
 	void	*buffer;
 
-	if (nmemb == 0 || size == 0)
-		return (NULL);
 	buffer = malloc(nmemb * size);
 	if (!buffer)
-		return (buffer = NULL);
-	ft_memset(buffer, 0, nmemb);
+		return (NULL);
+	ft_bzero(buffer, nmemb * size);
 	return (buffer);
 }
 /*
@@ -29,7 +27,7 @@ void	*ft_calloc(size_t nmemb, size_t size)
 int	main()
 {
 	int n = 10;
-	int *tab = (int *)ft_calloc(n, sizeof(int));
+	int *tab = (int *)calloc(n, sizeof(int));
 	for (int i = 0; i < n; i++)
 		printf("%d", tab[i]);
 	for (int i = 0; i < n - 1; i++)
