@@ -6,39 +6,12 @@
 /*   By: cvillene <cvillene@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/04 05:34:50 by cvillene          #+#    #+#             */
-/*   Updated: 2025/11/06 07:11:23 by cvillene         ###   ########.fr       */
+/*   Updated: 2025/11/06 07:41:45 by cvillene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strncpy(char *dest, char *src, size_t n)
-{
-	size_t	i;
-
-	i = 0;
-	while (i < n && src[i])
-	{
-		dest[i] = src[i];
-		i++;
-	}
-	dest[i] = '\0';
-	return (dest);
-}
-
-// void	*ft_memmove(void *dest, void *src, size_t n)
-// {
-// 	char	*temp;
-// 	char	*src_cpy;
-// 	char	*p_dest;
-
-// 	p_dest = dest;
-// 	temp = src;
-// 	ft_strncpy(src_cpy, temp, n);
-// 	while (n-- > 0)
-// 		*p_dest++ = *src_cpy++;
-// 	return (dest);
-// }
 void	*ft_memmove(void *dest, void *src, size_t n)
 {
 	unsigned char	*ptr_d;
