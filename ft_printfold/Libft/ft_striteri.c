@@ -1,23 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printargs.h                                     :+:      :+:    :+:   */
+/*   ft_striteri.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cvillene <cvillene@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/07 08:30:29 by cvillene          #+#    #+#             */
-/*   Updated: 2025/11/07 11:08:43 by cvillene         ###   ########.fr       */
+/*   Created: 2025/11/05 10:27:17 by cvillene          #+#    #+#             */
+/*   Updated: 2025/11/06 06:41:27 by cvillene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTARGS_H
-# define FT_PRINTARGS_H
-# include <stdarg.h>
-# include "../Libft/libft.h"
-# include "ft_putcount.h"
-# include "ft_dectohex.h"
+#include "libft.h"
 
-int	ft_checkargs(const char *format);
-int	ft_printargs(va_list *args, char c, int *count);
+void	ft_striteri(char *s, void (*f)(unsigned int, char*))
+{
+	int	i;
 
-#endif
+	if (s == NULL)
+		return ;
+	i = 0;
+	while (s[i])
+	{
+		(*f)(i, &s[i]);
+		i++;
+	}
+}

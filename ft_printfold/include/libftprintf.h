@@ -1,23 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printargs.h                                     :+:      :+:    :+:   */
+/*   libftprintf.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cvillene <cvillene@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/07 08:30:29 by cvillene          #+#    #+#             */
-/*   Updated: 2025/11/07 11:08:43 by cvillene         ###   ########.fr       */
+/*   Created: 2025/11/07 06:05:00 by cvillene          #+#    #+#             */
+/*   Updated: 2025/11/07 08:42:32 by cvillene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTARGS_H
-# define FT_PRINTARGS_H
+#ifndef LIBFTPRINTF_H
+# define LIBFTPRINTF_H
+# include <stdlib.h>
+# include <unistd.h>
 # include <stdarg.h>
 # include "../Libft/libft.h"
-# include "ft_putcount.h"
-# include "ft_dectohex.h"
+# include "ft_printargs.h"
 
-int	ft_checkargs(const char *format);
-int	ft_printargs(va_list *args, char c, int *count);
+int	ft_printf(const char *format, ...);
 
 #endif

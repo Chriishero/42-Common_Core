@@ -1,23 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printargs.h                                     :+:      :+:    :+:   */
+/*   ft_putcount.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cvillene <cvillene@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/07 08:30:29 by cvillene          #+#    #+#             */
-/*   Updated: 2025/11/07 11:08:43 by cvillene         ###   ########.fr       */
+/*   Created: 2025/11/07 06:55:40 by cvillene          #+#    #+#             */
+/*   Updated: 2025/11/07 08:31:49 by cvillene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTARGS_H
-# define FT_PRINTARGS_H
-# include <stdarg.h>
-# include "../Libft/libft.h"
-# include "ft_putcount.h"
-# include "ft_dectohex.h"
+#include "../include/ft_putcount.h"
 
-int	ft_checkargs(const char *format);
-int	ft_printargs(va_list *args, char c, int *count);
+int	ft_putchar_count(char c, int fd)
+{
+	write(fd, &c, 1);
+	return (1);
+}
 
-#endif
+int	ft_putstr_count(char *s, int fd)
+{
+	int	i;
+
+	i = 0;
+	while (s[i])
+	{
+		ft_putchar_count(s[i], fd);
+		i++;
+	}
+	return (i);
+}

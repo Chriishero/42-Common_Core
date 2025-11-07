@@ -1,40 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cvillene <cvillene@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/07 06:02:53 by cvillene          #+#    #+#             */
-/*   Updated: 2025/11/07 11:09:27 by cvillene         ###   ########.fr       */
+/*   Created: 2025/11/04 10:23:44 by cvillene          #+#    #+#             */
+/*   Updated: 2025/11/06 06:50:07 by cvillene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/libftprintf.h"
+#include "libft.h"
 
-int	ft_printf(const char *format, ...)
+char	*ft_strdup(const char *s)
 {
-	va_list	args;
+	char	*dup;
 	int		i;
-	int		count;
 
-	va_start(args, format);
-	if (ft_checkargs(format) == -1)
-		return (-1);
-	i = -1;
-	count = 0;
-	while (format[++i])
+	dup = (char *)malloc((ft_strlen((char *)s) + 1) * sizeof(char));
+	if (!dup)
+		return (NULL);
+	i = 0;
+	while (s[i])
 	{
-		if (format[i] == '%')
-		{
-			if (ft_printargs(&args, format[i + 1], &count) == -1)
-				return (-1);
-			i++;
-			continue ;
-		}
-		write(1, &format[i], 1);
-		count++;
+		dup[i] = s[i];
+		i++;
 	}
-	va_end(args);
-	return (count);
+	dup[i] = '\0';
+	return (dup);
 }
+/*
+#include <stdio.h>
+#include <string.h>
+int	main()
+{
+	char *str = "hello world!";
+	
+	char *dup = strdup(str);
+	printf("%s", dup);
+	free(dup);
+	return (0);
+}*/

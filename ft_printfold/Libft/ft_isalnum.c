@@ -1,23 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printargs.h                                     :+:      :+:    :+:   */
+/*   ft_isalnum.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cvillene <cvillene@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/07 08:30:29 by cvillene          #+#    #+#             */
-/*   Updated: 2025/11/07 11:08:43 by cvillene         ###   ########.fr       */
+/*   Created: 2025/11/03 11:19:48 by cvillene          #+#    #+#             */
+/*   Updated: 2025/11/06 06:43:03 by cvillene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTARGS_H
-# define FT_PRINTARGS_H
-# include <stdarg.h>
-# include "../Libft/libft.h"
-# include "ft_putcount.h"
-# include "ft_dectohex.h"
+#include "libft.h"
 
-int	ft_checkargs(const char *format);
-int	ft_printargs(va_list *args, char c, int *count);
-
-#endif
+int	ft_isalnum(char c)
+{
+	if ((c >= '0' && c <= '9')
+		|| (c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z'))
+		return (1);
+	return (0);
+}

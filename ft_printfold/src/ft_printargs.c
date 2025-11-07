@@ -6,30 +6,11 @@
 /*   By: cvillene <cvillene@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/07 06:16:32 by cvillene          #+#    #+#             */
-/*   Updated: 2025/11/07 11:11:40 by cvillene         ###   ########.fr       */
+/*   Updated: 2025/11/07 08:37:36 by cvillene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/ft_printargs.h"
-
-int	ft_checkargs(const char *format)
-{
-	char	c;
-	int		i;
-
-	i = 0;
-	while (format[++i])
-	{
-		if (format[i] == '%')
-		{
-			c = format[i + 1];
-			if (c != 'c' && c != 's' && c != 'd' && c != 'd' && c != 'p'
-				&& c != 'i' && c != 'u' && c != 'x' && c != 'X' && c != '%')
-				return (-1);
-		}
-	}
-	return (0);
-}
 
 int	ft_printargs(va_list *args, char c, int *count)
 {

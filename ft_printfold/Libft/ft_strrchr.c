@@ -1,40 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cvillene <cvillene@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/07 06:02:53 by cvillene          #+#    #+#             */
-/*   Updated: 2025/11/07 11:09:27 by cvillene         ###   ########.fr       */
+/*   Created: 2025/11/04 08:16:16 by cvillene          #+#    #+#             */
+/*   Updated: 2025/11/06 06:40:57 by cvillene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/libftprintf.h"
+#include "libft.h"
 
-int	ft_printf(const char *format, ...)
+char	*ft_strrchr(const char *s, int c)
 {
-	va_list	args;
+	char	*buf;
 	int		i;
-	int		count;
 
-	va_start(args, format);
-	if (ft_checkargs(format) == -1)
-		return (-1);
-	i = -1;
-	count = 0;
-	while (format[++i])
+	buf = NULL;
+	i = 0;
+	while (s[i])
 	{
-		if (format[i] == '%')
-		{
-			if (ft_printargs(&args, format[i + 1], &count) == -1)
-				return (-1);
-			i++;
-			continue ;
-		}
-		write(1, &format[i], 1);
-		count++;
+		if (s[i] == c)
+			buf = (char *)&s[i];
+		i++;
 	}
-	va_end(args);
-	return (count);
+	return (buf);
 }
+/*
+#include <stdio.h>
+int	main()
+{
+	char	*str = "bondour";
+	printf("%s", ft_strrchr(str, 'i'));
+}*/
