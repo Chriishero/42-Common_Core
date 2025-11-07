@@ -2,8 +2,7 @@ SRC = $(wildcard *.c)
 OBJ = $(SRC:.c=.o)
 NAME = libft.a
 
-all: 
-	$(NAME) clean
+all: $(NAME) clean
 
 # r : replace
 # c : create
