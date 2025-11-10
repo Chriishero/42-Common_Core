@@ -6,7 +6,7 @@
 /*   By: cvillene <cvillene@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/04 09:28:40 by cvillene          #+#    #+#             */
-/*   Updated: 2025/11/06 09:00:48 by cvillene         ###   ########.fr       */
+/*   Updated: 2025/11/10 13:41:12 by cvillene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	ft_atoi(const char *nptr)
 	int	value;
 
 	i = 0;
-	while (nptr[i] == ' ')
+	while (nptr[i] <= ' ')
 		i++;
 	sign = 1;
 	if (nptr[i] == '+' || nptr[i] == '-')

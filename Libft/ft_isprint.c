@@ -6,15 +6,15 @@
 /*   By: cvillene <cvillene@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/03 11:44:10 by cvillene          #+#    #+#             */
-/*   Updated: 2025/11/06 08:22:10 by cvillene         ###   ########.fr       */
+/*   Updated: 2025/11/10 13:48:56 by cvillene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_isprint(char c)
+int	ft_isprint(int c)
 {
-	if (c > ' ' && c < 127)
+	if (c >= ' ' && c < 127)
 		return (1);
 	return (0);
 }

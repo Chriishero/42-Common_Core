@@ -6,7 +6,7 @@
 /*   By: cvillene <cvillene@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/04 08:34:53 by cvillene          #+#    #+#             */
-/*   Updated: 2025/11/06 08:53:48 by cvillene         ###   ########.fr       */
+/*   Updated: 2025/11/10 13:32:08 by cvillene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ void	*ft_memchr(const void *s, int c, size_t n)
 	unsigned char	*ptr;
 	size_t			i;
 
+	if (!s)
+		return (NULL);
 	ptr = (unsigned char *)s;
 	i = 0;
 	while (ptr[i] && i < n)
