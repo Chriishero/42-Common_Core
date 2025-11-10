@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "../include/ft_printargs.h"
+#include <stdio.h>
 
 int	ft_checkargs(const char *format)
 {
