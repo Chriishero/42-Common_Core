@@ -9,7 +9,11 @@ OBJS = $(SRCS:.c=.o)
 NAME = libftprintf.a
 LIBFT = ./Libft/libft.a
 
+<<<<<<< HEAD
 all: $(LIBFT) $(NAME)
+=======
+all: $(LIBFT) $(NAME) clean
+>>>>>>> 2089b7fbda30218df60985e26489648867c2a84e
 
 $(LIBFT) :
 	$(MAKE) -C Libft/

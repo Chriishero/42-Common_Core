@@ -15,7 +15,53 @@
 
 int	main()
 {
+<<<<<<< HEAD
 	ft_printf("Hello %X et %d et %s\n", 567899999, 890);
 	//printf("Hello %X et %d et %s\n", 567899999, 890);
+=======
+	printf("%d\n", ft_printf("Hello %X et %d et %s\n", 521121, -2147483647, "sûrement"));
+	printf("%d\n", printf("Hello %X et %d et %s\n", 521121, -2147483647, "sûrement"));
+>>>>>>> 2089b7fbda30218df60985e26489648867c2a84e
 	return (0);
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
