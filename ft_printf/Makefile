@@ -1,3 +1,5 @@
+CC = cc
+CFLAGS = -Wall -Wextra -Werror
 SRCS =  src/ft_printf.c \
 		src/ft_printargs.c \
 		src/ft_putcount.c \
@@ -5,11 +7,18 @@ SRCS =  src/ft_printf.c \
 
 OBJS = $(SRCS:.c=.o)
 NAME = libftprintf.a
+LIBFT = ./Libft/libft.a
 
-all: $(NAME) clean
+all: $(LIBFT) $(NAME) clean
+
+$(LIBFT) :
+	$(MAKE) -C Libft/
+
+%.o: %.c
+	$(CC) -c $(CFLAGS) $< -o $@ -I Libft/
 
 $(NAME) : $(OBJS)
-	$(MAKE) -C Libft/
+	cp $(LIBFT) $(NAME)
 	ar rcs $(NAME) $(OBJS)
 
 clean:
