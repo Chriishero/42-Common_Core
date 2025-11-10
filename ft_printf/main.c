@@ -6,7 +6,7 @@
 /*   By: cvillene <cvillene@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/07 08:43:02 by cvillene          #+#    #+#             */
-/*   Updated: 2025/11/07 11:12:28 by cvillene         ###   ########.fr       */
+/*   Updated: 2025/11/07 13:26:10 by cvillene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,6 @@
 int	main()
 {
 	ft_printf("Hello %X et %d et %s\n", 567899999, 890);
-	printf("Hello %X et %d et %s\n", 567899999, 890);
+	//printf("Hello %X et %d et %s\n", 567899999, 890);
 	return (0);
 }
