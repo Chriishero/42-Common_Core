@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cvillene <cvillene@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/05 05:50:04 by cvillene          #+#    #+#             */
-/*   Updated: 2025/11/10 14:14:32 by cvillene         ###   ########.fr       */
+/*   Updated: 2025/11/11 18:57:03 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	int		i;
 	int		j;
 
-	if (s1 == NULL && s2 == NULL)
-		return ((char*)"");
+	if (!s1 && !s2)
+		return (ft_strdup(""));
 	else if (s1 == NULL)
 		return (ft_strdup(s2));
 	else if (s2 == NULL)
