@@ -6,11 +6,11 @@
 /*   By: cvillene <cvillene@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/07 06:02:53 by cvillene          #+#    #+#             */
-/*   Updated: 2025/11/07 11:09:27 by cvillene         ###   ########.fr       */
+/*   Updated: 2025/11/13 17:23:04 by cvillene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/libftprintf.h"
+#include "../ft_printf.h"
 
 int	ft_printf(const char *format, ...)
 {
@@ -19,13 +19,15 @@ int	ft_printf(const char *format, ...)
 	int		count;
 
 	va_start(args, format);
-	if (ft_checkargs(format) == -1)
+	if (ft_checkconversion(format) == -1)
 		return (-1);
+	va_end(args);
+	va_start(args, format);
 	i = -1;
 	count = 0;
 	while (format[++i])
 	{
-		if (format[i] == '%')
+		if (format[i] == '%' && format[i - 1] != '%')
 		{
 			if (ft_printargs(&args, format[i + 1], &count) == -1)
 				return (-1);

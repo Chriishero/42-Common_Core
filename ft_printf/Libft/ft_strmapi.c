@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cvillene <cvillene@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/05 10:10:58 by cvillene          #+#    #+#             */
-/*   Updated: 2025/11/06 06:48:18 by cvillene         ###   ########.fr       */
+/*   Updated: 2025/11/11 19:10:58 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,22 +23,28 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 	if (!new_str)
 		return (NULL);
 	i = 0;
-	while (s[i])
+	while (s[i] && (*f))
 	{
 		new_str[i] = (*f)(i, s[i]);
 		i++;
 	}
+	new_str[i] = '\0';
 	return (new_str);
 }
-/*
-#include <stdio.h>
-char    ft_changeChar(unsigned int idx, char c)
-{
-    if (idx % 2 == 0)
-        return (c - 32);
-    return (c);
-}
-int main()
-{
-    printf("%s", ft_strmapi("hello world", &ft_changeChar));
-}*/
+
+// #include <stdio.h>
+// char    display_index(unsigned int index, char s)
+// {
+// 	if (s == 'i')
+// 	{
+// 			printf("%d\n", index);
+// 			return '0';
+// 	}
+// 	return s;
+// }
+// #define STRING_TEST "This is a really cool string!"
+// int main()
+// {
+//     printf("%s", ft_strmapi(STRING_TEST, &display_index));
+// 	return (0);
+// }

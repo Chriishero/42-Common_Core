@@ -6,11 +6,11 @@
 /*   By: cvillene <cvillene@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/07 07:18:17 by cvillene          #+#    #+#             */
-/*   Updated: 2025/11/07 13:29:15 by cvillene         ###   ########.fr       */
+/*   Updated: 2025/11/13 17:48:14 by cvillene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/ft_dectohex.h"
+#include "../ft_dectohex.h"
 
 static char	*ft_reverse_str(char *s)
 {
@@ -35,10 +35,10 @@ static char	*ft_reverse_str(char *s)
 	return (p);
 }
 
-char	*ft_dectohex(int n, int islower)
+char	*ft_dectohex(long long n, int islower)
 {
 	char	*hex_array;
-	char	result[8 * 16];
+	char	result[8 * 18];
 	int		i;
 	char	*p;
 
@@ -53,6 +53,12 @@ char	*ft_dectohex(int n, int islower)
 		n /= 16;
 	}
 	result[i] = '\0';
+	if (n == LONG_MIN)
+		return ((char *)"8000000000000000");
+	if ((unsigned long)n == ULONG_MAX)
+		return ((char *)"ffffffffffffffff");
+	if ((unsigned long)n == -ULONG_MAX)
+		return ((char *)"1");
 	p = result;
 	return (ft_reverse_str(p));
 }

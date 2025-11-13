@@ -3,67 +3,46 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cvillene <cvillene@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/05 05:58:38 by cvillene          #+#    #+#             */
-/*   Updated: 2025/11/07 05:54:16 by cvillene         ###   ########.fr       */
+/*   Updated: 2025/11/11 19:52:17 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	ft_trimedstrlen(const char *s1, const char *set)
-{
-	int	final_len;
-	int	i;
-	int	j;
-
-	final_len = 0;
-	i = 0;
-	while (s1[i])
-	{
-		j = 0;
-		while (s1[i] != set[j] && set[j])
-			j++;
-		if (s1[i] == set[j] && set[j])
-			final_len--;
-		else
-			final_len++;
-		i++;
-	}
-	return (final_len);
-}
-
 char	*ft_strtrim(char const *s1, char const *set)
 {
-	int		i;
-	int		j;
+	int		start;
+	int		end;
 	char	*trimed_str;
-	int		k;
+	int		i;
 
-	if (s1 == NULL || set == NULL)
+	if (!s1)
 		return (NULL);
-	trimed_str = (char *)malloc((ft_trimedstrlen(s1, set) + 1) * sizeof(char));
+	else if (!set)
+		return (ft_strdup(s1));
+	start = 0;
+	while (s1[start] && ft_strchr(set, s1[start]))
+		start++;
+	end = ft_strlen((char *)s1) - 1;
+	while (end >= start && ft_strchr(set, s1[end]))
+		end--;
+	trimed_str = (char *)malloc(sizeof(char) * (end - start + 2));
 	if (!trimed_str)
 		return (NULL);
 	i = 0;
-	k = 0;
-	while (s1[i])
-	{
-		j = 0;
-		while (s1[i] != set[j] && set[j])
-			j++;
-		if (!set[j])
-			trimed_str[k++] = s1[i];
-		i++;
-	}
-	trimed_str[k] = '\0';
+	while (start <= end)
+		trimed_str[i++] = s1[start++];
+	trimed_str[i] = '\0';
 	return (trimed_str);
 }
 /*
 #include <stdio.h>
 int	main()
 {
-	printf("%s", ft_strtrim("hello world  !!?!", "eo ?"));
+	printf("%s", ft_strtrim("  qwerty helloqwertyworld  !!?! qwer ", "qwerty "));
 	return (0);
-}*/
+}
+*/

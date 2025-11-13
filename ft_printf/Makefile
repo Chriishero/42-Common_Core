@@ -2,6 +2,7 @@ CC = cc
 CFLAGS = -Wall -Wextra -Werror
 SRCS =  src/ft_printf.c \
 		src/ft_printargs.c \
+		src/ft_checkargs.c \
 		src/ft_putcount.c \
 		src/ft_dectohex.c
 
@@ -9,21 +10,17 @@ OBJS = $(SRCS:.c=.o)
 NAME = libftprintf.a
 LIBFT = ./Libft/libft.a
 
-<<<<<<< HEAD
 all: $(LIBFT) $(NAME)
-=======
-all: $(LIBFT) $(NAME) clean
->>>>>>> 2089b7fbda30218df60985e26489648867c2a84e
 
 $(LIBFT) :
 	$(MAKE) -C Libft/
 
-%.o: %.c
-	$(CC) -c $(CFLAGS) $< -o $@ -I Libft/
-
 $(NAME) : $(OBJS)
 	cp $(LIBFT) $(NAME)
 	ar rcs $(NAME) $(OBJS)
+
+%.o: %.c
+	$(CC) -c $(CFLAGS) $< -o $@ -I Libft/
 
 clean:
 	$(MAKE) clean -C Libft/

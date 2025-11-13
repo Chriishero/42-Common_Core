@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cvillene <cvillene@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/04 09:54:44 by cvillene          #+#    #+#             */
-/*   Updated: 2025/11/06 06:53:11 by cvillene         ###   ########.fr       */
+/*   Updated: 2025/11/13 09:24:10 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ void	*ft_calloc(size_t nmemb, size_t size)
 {
 	void	*buffer;
 
+	if (nmemb != 0 && size > SIZE_MAX / nmemb)
+		return (NULL);
 	buffer = malloc(nmemb * size);
 	if (!buffer)
 		return (NULL);

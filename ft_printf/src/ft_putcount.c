@@ -6,11 +6,11 @@
 /*   By: cvillene <cvillene@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/07 06:55:40 by cvillene          #+#    #+#             */
-/*   Updated: 2025/11/07 08:31:49 by cvillene         ###   ########.fr       */
+/*   Updated: 2025/11/13 17:19:53 by cvillene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/ft_putcount.h"
+#include "../ft_putcount.h"
 
 int	ft_putchar_count(char c, int fd)
 {
@@ -20,7 +20,7 @@ int	ft_putchar_count(char c, int fd)
 
 int	ft_putstr_count(char *s, int fd)
 {
-	int	i;
+	static int	i;
 
 	i = 0;
 	while (s[i])
