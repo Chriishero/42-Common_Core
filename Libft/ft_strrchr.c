@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/04 08:16:16 by cvillene          #+#    #+#             */
-/*   Updated: 2025/11/11 19:32:54 by marvin           ###   ########.fr       */
+/*   Updated: 2025/11/13 09:28:29 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ char	*ft_strrchr(const char *s, int c)
 	i = 0;
 	while (s && s[i])
 	{
-		if (s[i] == c)
+		if (s[i] == (char)c)
 			buf = (char *)&s[i];
 		i++;
 	}
