@@ -15,9 +15,6 @@ NAME = libft.a
 
 all: $(NAME)
 
-# r : replace
-# c : create
-# s : sort
 $(NAME) : $(OBJ)
 	ar rcs $(NAME) $(OBJ)
 
@@ -27,15 +24,12 @@ bonus: $(OBJ) $(OBJ_BONUS)
 %.o: %.c libft.h
 	$(CC) $(CFLAGS) -c $< -o $@
 
-# rm -f : supprime sans confirmation nécessaire
 clean:
 	rm -f $(OBJ) $(OBJ_BONUS)
 
-# fclean : avec make fclean, lance clean puis rm libft.a
 fclean: clean
 	rm -f $(NAME)
 
 re: fclean all
 
-# .PHONY : les cibles ne sont pas associés avec un fichier
 .PHONY: all bonus clean fclean re
