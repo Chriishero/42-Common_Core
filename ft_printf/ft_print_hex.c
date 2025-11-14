@@ -1,23 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_print_hex.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cvillene <cvillene@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/14 07:59:51 by cvillene          #+#    #+#             */
-/*   Updated: 2025/11/14 09:36:00 by cvillene         ###   ########.fr       */
+/*   Created: 2025/11/14 09:25:03 by cvillene          #+#    #+#             */
+/*   Updated: 2025/11/14 09:34:29 by cvillene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
-#include <limits.h>
+#include "ft_printargs.h"
 
-int	main()
+int	ft_print_hex(unsigned int x, char c)
 {
-	int	i = 0;
-	int n = INT_MIN + 4;
-	ft_printf("%p et %p puis un %u et %x\n", (void *)0, &i, n, INT_MIN + 456789);
-	printf("%p et %p puis un %u et %x\n", (void *)0, &i, n, INT_MIN + 456789);
-	return (0);
+	char	*hex;
+	int		hex_len;
+
+	x += UINT_MAX + 1;
+	if (c == 'x')
+		hex = ft_dectohex(x, 1);
+	else
+		hex = ft_dectohex(x, 0);
+	ft_putstr_fd(hex, 1);
+	hex_len = ft_strlen(hex);
+	free(hex);
+	return (hex_len);
 }

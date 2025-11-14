@@ -1,23 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_print_p.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cvillene <cvillene@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/14 07:59:51 by cvillene          #+#    #+#             */
-/*   Updated: 2025/11/14 09:36:00 by cvillene         ###   ########.fr       */
+/*   Created: 2025/11/14 08:12:04 by cvillene          #+#    #+#             */
+/*   Updated: 2025/11/14 09:35:37 by cvillene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
-#include <limits.h>
+#include "ft_printargs.h"
 
-int	main()
+int	ft_print_p(unsigned long long p)
 {
-	int	i = 0;
-	int n = INT_MIN + 4;
-	ft_printf("%p et %p puis un %u et %x\n", (void *)0, &i, n, INT_MIN + 456789);
-	printf("%p et %p puis un %u et %x\n", (void *)0, &i, n, INT_MIN + 456789);
-	return (0);
+	char	*address;
+	int		address_len;
+
+	if (p == 0)
+		address = "(nil)";
+	else
+		address = ft_strjoin("0x", ft_dectohex((long long)p, 1));
+	ft_putstr_fd(address, 1);
+	address_len = ft_strlen(address);
+	if (p != 0)
+		free(address);
+	return (address_len);
 }

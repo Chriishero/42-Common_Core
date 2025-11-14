@@ -1,23 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_print_c.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cvillene <cvillene@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/14 07:59:51 by cvillene          #+#    #+#             */
-/*   Updated: 2025/11/14 09:36:00 by cvillene         ###   ########.fr       */
+/*   Created: 2025/11/14 07:50:39 by cvillene          #+#    #+#             */
+/*   Updated: 2025/11/14 09:34:43 by cvillene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
-#include <limits.h>
+#include "ft_printargs.h"
 
-int	main()
+int	ft_print_c(int c)
 {
-	int	i = 0;
-	int n = INT_MIN + 4;
-	ft_printf("%p et %p puis un %u et %x\n", (void *)0, &i, n, INT_MIN + 456789);
-	printf("%p et %p puis un %u et %x\n", (void *)0, &i, n, INT_MIN + 456789);
-	return (0);
+	ft_putchar_fd(c, 1);
+	return (1);
 }

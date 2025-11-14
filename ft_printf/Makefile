@@ -1,10 +1,14 @@
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
-SRCS =  src/ft_printf.c \
-		src/ft_printargs.c \
-		src/ft_checkargs.c \
-		src/ft_putcount.c \
-		src/ft_dectohex.c
+SRCS =  ft_printf.c \
+		ft_printf_utils.c \
+		ft_printargs.c \
+		ft_print_c.c \
+		ft_print_s.c \
+		ft_print_p.c \
+		ft_print_int.c \
+		ft_print_u.c \
+		ft_print_hex.c
 
 OBJS = $(SRCS:.c=.o)
 NAME = libftprintf.a
