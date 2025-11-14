@@ -6,7 +6,7 @@
 /*   By: cvillene <cvillene@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/14 07:42:39 by cvillene          #+#    #+#             */
-/*   Updated: 2025/11/14 09:32:06 by cvillene         ###   ########.fr       */
+/*   Updated: 2025/11/14 10:35:53 by cvillene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 
 int		ft_print_c(int c);
 int		ft_print_s(char *s);
-int		ft_print_p(unsigned long long p);
+int		ft_print_p(unsigned long p);
 int		ft_print_int(int n);
 int		ft_print_u(unsigned int u);
 int		ft_print_hex(unsigned int x, char c);

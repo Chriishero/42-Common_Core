@@ -6,7 +6,7 @@
 /*   By: cvillene <cvillene@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/14 08:19:25 by cvillene          #+#    #+#             */
-/*   Updated: 2025/11/14 09:35:27 by cvillene         ###   ########.fr       */
+/*   Updated: 2025/11/14 10:37:27 by cvillene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,30 +28,39 @@ char	*ft_reversestr(char *s)
 	while (i >= 0)
 		result[j++] = s[i--];
 	result[j] = '\0';
+	free(s);
 	return (result);
 }
 
-char	*ft_dectohex(long long n, int islower)
+char	*ft_dectohex(unsigned long n, int islower)
 {
-	char	result[8 * 18];
+	char	*result;
 	char	*hex_array;
 	int		i;
 
+	result = (char *)malloc(ft_nbrlen(n) + 1);
+	if (!result)
+		return (NULL);
 	if (islower == 1)
 		hex_array = "0123456789abcdef";
 	else
 		hex_array = "0123456789ABCDEF";
 	i = 0;
+	if (n == 0)
+		result[i++] = '0';
 	while (n != 0)
 	{
-		result[i++] = hex_array[n % 16];
+		if (n % 16 < 0)
+			result[i++] = hex_array[n % 16 * -1];
+		else
+			result[i++] = hex_array[n % 16];
 		n /= 16;
 	}
 	result[i] = '\0';
 	return (ft_reversestr(&result[0]));
 }
 
-int	ft_nbrlen(long n)
+int	ft_nbrlen(unsigned long n)
 {
 	int	i;
 

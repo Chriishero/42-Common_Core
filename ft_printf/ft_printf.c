@@ -6,7 +6,7 @@
 /*   By: cvillene <cvillene@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/14 07:38:06 by cvillene          #+#    #+#             */
-/*   Updated: 2025/11/14 09:34:53 by cvillene         ###   ########.fr       */
+/*   Updated: 2025/11/14 09:48:41 by cvillene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,9 @@ int	ft_printf(const char *format, ...)
 	int		check;
 
 	va_start(args, format);
-	i = 0;
+	i = -1;
 	count = 0;
-	while (format[i])
+	while (format[++i])
 	{
 		if (format[i] == '%')
 		{
@@ -30,13 +30,11 @@ int	ft_printf(const char *format, ...)
 			if (check == -1)
 				return (-1);
 			count += check;
+			continue ;
 		}
-		else
-		{
-			count++;
-			ft_putchar_fd(format[i], 1);
-		}
-		i++;
+		count++;
+		ft_putchar_fd(format[i], 1);
 	}
+	va_end(args);
 	return (count);
 }
