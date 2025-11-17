@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cvillene <cvillene@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/10 11:41:52 by cvillene          #+#    #+#             */
-/*   Updated: 2025/11/17 16:56:07 by cvillene         ###   ########.fr       */
+/*   Updated: 2025/11/17 17:18:45 by cvillene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,22 +63,22 @@ static char	*read_file(int fd, char **res)
 
 char	*get_next_line(int fd)
 {
-	static char	*res;
+	static char	*res[1024];
 	char		*line;
 	char		*tmp;
 
 	if (fd <= 0 || BUFFER_SIZE <= 0)
 		return (NULL);
-	if (!res)
-		res = ft_strdup("");
-	tmp = read_file(fd, &res);
+	if (!res[fd])
+		res[fd] = ft_strdup("");
+	tmp = read_file(fd, &res[fd]);
 	if (!tmp)
 		return (NULL);
-	line = extract_line(res);
+	line = extract_line(res[fd]);
 	if (!line)
 		return (NULL);
-	tmp = ft_substr(res, ft_strlen(line), ft_strlen(res));
-	free(res);
-	res = tmp;
+	tmp = ft_substr(res[fd], ft_strlen(line), ft_strlen(res[fd]));
+	free(res[fd]);
+	res[fd] = tmp;
 	return (line);
 }
