@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: cvillene <cvillene@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/10 11:43:31 by cvillene          #+#    #+#             */
-/*   Updated: 2025/11/17 13:33:42 by marvin           ###   ########.fr       */
+/*   Updated: 2025/11/17 14:48:53 by cvillene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,6 @@
 # include <stdio.h>
 
 char	*get_next_line(int fd);
-char	*get_line(char *stash);
-char	*read_file(int fd);
-char	*free_join(char *stash, char **buffer);
 int		ft_strlen(char *s);
 char	*ft_strdup(const char *s);
 char	*ft_strjoin(char const *s1, char const *s2);
