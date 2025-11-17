@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/10 11:45:19 by cvillene          #+#    #+#             */
-/*   Updated: 2025/11/17 09:22:08 by marvin           ###   ########.fr       */
+/*   Updated: 2025/11/17 12:16:47 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,11 @@ int	main()
 	char	*line;
 
 	fd = open("test.txt", O_RDONLY);
-	line = get_next_line(fd);
-	printf("oui : %s", line);
-	free(line);
-	/*for (line = get_next_line(fd); line; line = get_next_line(fd))
-		printf("oui : %s", line);*/
+	for (line = get_next_line(fd); line; line = get_next_line(fd))
+	{
+		printf("oui : %s", line);
+		free(line);
+	}
 	close(fd);
 	return (0);
 }
