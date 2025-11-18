@@ -6,11 +6,11 @@
 /*   By: cvillene <cvillene@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/10 11:41:52 by cvillene          #+#    #+#             */
-/*   Updated: 2025/11/17 17:18:45 by cvillene         ###   ########.fr       */
+/*   Updated: 2025/11/18 07:50:01 by cvillene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 static char	*extract_line(char *res)
 {
@@ -67,7 +67,7 @@ char	*get_next_line(int fd)
 	char		*line;
 	char		*tmp;
 
-	if (fd <= 0 || BUFFER_SIZE <= 0)
+	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
 	if (!res[fd])
 		res[fd] = ft_strdup("");

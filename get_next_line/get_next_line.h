@@ -6,7 +6,7 @@
 /*   By: cvillene <cvillene@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/10 11:43:31 by cvillene          #+#    #+#             */
-/*   Updated: 2025/11/17 14:48:53 by cvillene         ###   ########.fr       */
+/*   Updated: 2025/11/18 07:12:13 by cvillene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@
 # endif
 # include <stdlib.h>
 # include <unistd.h>
-# include <stdio.h>
 
 char	*get_next_line(int fd);
 int		ft_strlen(char *s);

@@ -6,7 +6,7 @@
 /*   By: cvillene <cvillene@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/10 11:41:52 by cvillene          #+#    #+#             */
-/*   Updated: 2025/11/17 16:56:07 by cvillene         ###   ########.fr       */
+/*   Updated: 2025/11/18 07:49:22 by cvillene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ char	*get_next_line(int fd)
 	char		*line;
 	char		*tmp;
 
-	if (fd <= 0 || BUFFER_SIZE <= 0)
+	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
 	if (!res)
 		res = ft_strdup("");
