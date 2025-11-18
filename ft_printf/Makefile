@@ -2,6 +2,8 @@ CC = cc
 CFLAGS = -Wall -Wextra -Werror
 SRCS =  ft_printf.c \
 		ft_printf_utils.c \
+		ft_dectohex.c \
+		ft_nbrlen.c \
 		ft_printargs.c \
 		ft_print_c.c \
 		ft_print_s.c \

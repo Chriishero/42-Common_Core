@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_print_p.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cvillene <cvillene@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/14 08:12:04 by cvillene          #+#    #+#             */
-/*   Updated: 2025/11/14 10:36:30 by cvillene         ###   ########.fr       */
+/*   Updated: 2025/11/18 13:59:26 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	ft_print_p(unsigned long p)
 	int		address_len;
 
 	address = NULL;
-	hex = ft_dectohex(p, 1);
+	hex = ft_dectohex_unsigned(p, 1);
 	if (p == 0)
 		address = "(nil)";
 	else
