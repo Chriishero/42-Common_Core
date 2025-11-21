@@ -6,7 +6,7 @@
 /*   By: cvillene <cvillene@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/10 11:41:52 by cvillene          #+#    #+#             */
-/*   Updated: 2025/11/18 07:49:22 by cvillene         ###   ########.fr       */
+/*   Updated: 2025/11/21 09:27:55 by cvillene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static char	*extract_line(char *res)
 	return (line);
 }
 
-static char	*read_file(int fd, char **res)
+static char	*read_file(int fd, char *res)
 {
 	char	*buffer;
 	int		nbytes;
@@ -41,7 +41,7 @@ static char	*read_file(int fd, char **res)
 	buffer = (char *)malloc((BUFFER_SIZE + 1) * sizeof(char));
 	if (!buffer)
 		return (NULL);
-	while (!ft_strchr(*res, '\n'))
+	while (!ft_strchr(res, '\n'))
 	{
 		nbytes = read(fd, buffer, BUFFER_SIZE);
 		if (nbytes == -1)
@@ -49,16 +49,16 @@ static char	*read_file(int fd, char **res)
 		if (nbytes == 0)
 			break ;
 		buffer[nbytes] = '\0';
-		tmp = ft_strjoin(*res, buffer);
-		free(*res);
-		*res = tmp;
-		if (!*res)
-			return (free(*res), free(buffer), NULL);
+		tmp = ft_strjoin(res, buffer);
+		free(res);
+		res = tmp;
+		if (!res)
+			return (free(res), free(buffer), NULL);
 	}
 	free(buffer);
-	if (!res || (*res)[0] == '\0')
+	if (!res || (res)[0] == '\0')
 		return (NULL);
-	return (*res);
+	return (res);
 }
 
 char	*get_next_line(int fd)
@@ -69,9 +69,8 @@ char	*get_next_line(int fd)
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
-	if (!res)
-		res = ft_strdup("");
-	tmp = read_file(fd, &res);
+	tmp = read_file(fd, res);
+	res = tmp;
 	if (!tmp)
 		return (NULL);
 	line = extract_line(res);

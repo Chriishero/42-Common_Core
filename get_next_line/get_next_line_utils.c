@@ -6,7 +6,7 @@
 /*   By: cvillene <cvillene@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/10 11:43:29 by cvillene          #+#    #+#             */
-/*   Updated: 2025/11/17 14:46:53 by cvillene         ###   ########.fr       */
+/*   Updated: 2025/11/21 09:11:31 by cvillene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	if (!s)
 		return (NULL);
 	if (start >= (unsigned int)s_len)
-		return (ft_strdup(""));
+		return (NULL);
 	if (len > s_len - start)
 		len = s_len - start;
 	sub = (char *)malloc((len + 1) * sizeof(char));

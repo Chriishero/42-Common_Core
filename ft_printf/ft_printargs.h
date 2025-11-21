@@ -3,16 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printargs.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: cvillene <cvillene@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/14 07:42:39 by cvillene          #+#    #+#             */
-/*   Updated: 2025/11/18 14:05:36 by marvin           ###   ########.fr       */
+/*   Updated: 2025/11/20 05:36:24 by cvillene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_PRINTARGS_H
 # define FT_PRINTARGS_H
-# include <stdio.h>
 # include <stdlib.h>
 # include <stdarg.h>
 # include <limits.h>
