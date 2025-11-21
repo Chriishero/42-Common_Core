@@ -36,6 +36,6 @@ fclean: clean
 	$(MAKE) fclean -C Libft/
 	rm -f $(NAME)
 
-re: fclean $(NAME)
+re: fclean $(LIBFT) $(NAME)
 
 .PHONY: all clean fclean re
