@@ -6,7 +6,7 @@
 /*   By: cvillene <cvillene@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/21 06:52:37 by cvillene          #+#    #+#             */
-/*   Updated: 2025/11/21 08:58:34 by cvillene         ###   ########.fr       */
+/*   Updated: 2025/11/26 07:30:47 by cvillene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,13 @@
 # define PUSH_SWAP_H
 # include "stack.h"
 # include "utils.h"
+# include "benchmark.h"
 
-t_stack	*init_stack(char *list);
-void	push_swap(t_stack **a, t_stack **b, char *strategy);
-void	simple_sorting(t_stack **a, t_stack **b);
-void	medium_sorting(t_stack **a, t_stack **b);
-void	complex_sorting(t_stack **a, t_stack **b);
+void			push_swap(t_stack **a, t_stack **b,
+					char *strategy, int isbenchmark);
+t_monitoring	simple_sorting(t_stack **a, t_stack **b);
+t_monitoring	medium_sorting(t_stack **a, t_stack **b);
+t_monitoring	complex_sorting(t_stack **a, t_stack **b);
+t_monitoring	adaptive_sorting(t_stack **a, t_stack **b);
 
 #endif

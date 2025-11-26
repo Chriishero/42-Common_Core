@@ -1,23 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_args.h                                       :+:      :+:    :+:   */
+/*   push_stack.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cvillene <cvillene@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/21 07:34:13 by cvillene          #+#    #+#             */
-/*   Updated: 2025/11/25 09:08:31 by cvillene         ###   ########.fr       */
+/*   Created: 2025/11/26 06:41:58 by cvillene          #+#    #+#             */
+/*   Updated: 2025/11/26 08:07:34 by cvillene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CHECK_ARGS_H
-# define CHECK_ARGS_H
-# include "Libft/libft.h"
-# include "utils.h"
+#include "stack.h"
 
-void	check_args(int argc, char **argv);
-void	error(void);
-int		check_modes(int argc, char **argv);
-int		check_list(char *list);
+int	push(t_stack **s1, t_stack **s2)
+{
+	t_stack	*first;
+	t_stack	*second;
 
-#endif
+	if (!s1 || !*s1 || !s2 || !*s2)
+		return (0);
+	first = *s1;
+	second = first->next;
+	first->next = *s2;
+	*s1 = second;
+	*s2 = first;
+	return (1);
+}
