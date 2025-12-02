@@ -6,7 +6,7 @@
 /*   By: cvillene <cvillene@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/21 06:50:46 by cvillene          #+#    #+#             */
-/*   Updated: 2025/11/27 08:50:20 by cvillene         ###   ########.fr       */
+/*   Updated: 2025/12/02 07:14:41 by cvillene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ int main(int argc, char **argv)
 
 	check_args(argc, argv);
 	a = init_stack(argv, argc);
-	b = init_stack(argv, 0);
+	b = NULL;
 	for (curr = a; curr; curr = curr->next)
 		ft_printf("%d\n", curr->content);
 	push_swap(&a, &b, "--simple", 1);

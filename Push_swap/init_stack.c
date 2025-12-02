@@ -6,11 +6,12 @@
 /*   By: cvillene <cvillene@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/25 07:13:24 by cvillene          #+#    #+#             */
-/*   Updated: 2025/11/27 08:56:49 by cvillene         ###   ########.fr       */
+/*   Updated: 2025/12/02 07:08:57 by cvillene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "stack.h"
+#include "utils.h"
 
 // static int	count_element(char *list)
 // {
