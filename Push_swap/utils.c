@@ -6,7 +6,7 @@
 /*   By: cvillene <cvillene@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/21 08:57:36 by cvillene          #+#    #+#             */
-/*   Updated: 2025/12/03 09:02:33 by cvillene         ###   ########.fr       */
+/*   Updated: 2025/12/17 23:00:30 by cvillene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	free_after_split(char **tab)
 	int	i;
 
 	i = 0;
-	while (tab[i])
+	while (tab && tab[i])
 	{
 		free(tab[i]);
 		i++;
@@ -38,7 +38,7 @@ int	stack_size(t_stack *s)
 	return (i);
 }
 
-int	ft_sqrt(int n)
+int	ft_ceil_sqrt(int n)
 {
 	int	res;
 
@@ -73,4 +73,23 @@ long	ft_atol(const char *nptr)
 		i++;
 	}
 	return (value * sign);
+}
+
+char	*toupper_first_letter(char *str)
+{
+	int	i;
+
+	if (!str)
+		return (NULL);
+	i = 0;
+	while (str[i])
+	{
+		if (str[i] >= 'a' && str[i] <= 'z')
+		{
+			str[i] -= 32;
+			break ;
+		}
+		i++;
+	}
+	return (str);
 }

@@ -6,41 +6,34 @@
 /*   By: cvillene <cvillene@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/02 07:51:20 by cvillene          #+#    #+#             */
-/*   Updated: 2025/12/03 09:57:15 by cvillene         ###   ########.fr       */
+/*   Updated: 2025/12/17 23:05:01 by cvillene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	find_max_value(t_stack *s)
+static int	find_value_in_chunk(t_stack *a, int min, int max, int istop)
 {
-	int	max;
+	int	i;
+	int	idx;
 
-	max = INT_MIN;
-	while (s)
+	if (!a)
+		return (FAILURE);
+	i = 0;
+	idx = FAILURE;
+	while (a)
 	{
-		if (s->content > max)
-			max = s->content;
-		s = s->next;
+		if (a->content >= min && a->content <= max)
+		{
+			if (istop == TRUE)
+				return (i);
+			else
+				idx = i;
+		}
+		i++;
+		a = a->next;
 	}
-	return (max);
-}
-
-static t_monitoring	chunks_sorting(t_stack **a, t_stack **b)
-{
-	t_monitoring	m;
-	int				max_idx;
-	
-	m = (t_monitoring){0};
-	max_idx = stack_size(*b);
-	while (stack_size(*b) >= 0)
-	{
-		while ((*b)->content != max_idx)
-			m.n_rb += rotate(b);
-		m.n_pa += push(b, a);
-		max_idx--;
-	}
-	return (m);
+	return (idx);
 }
 
 static int	*value_to_index(t_stack *a)
@@ -51,7 +44,7 @@ static int	*value_to_index(t_stack *a)
 	int		i;
 	int		index;
 
-	tabs = (int *)malloc(sizeof(int) * (stack_size(a) + 1));
+	tabs = (int *)malloc(sizeof(int) * (stack_size(a)));
 	if (!tabs)
 		return (NULL);
 	curr = a;
@@ -66,17 +59,16 @@ static int	*value_to_index(t_stack *a)
 				i++;
 			compare = compare->next;
 		}
-		tabs[index] = i;
+		tabs[index++] = i;
 		curr = curr->next;
-		index++;
-    }
+	}
 	return (tabs);
 }
 
-void	replace_content_by_index(t_stack **a, int *indexs)
+static void	replace_content_by_index(t_stack **a, int *indexs)
 {
 	t_stack	*curr;
-	int 	i;
+	int		i;
 
 	curr = *a;
 	i = 0;
@@ -88,33 +80,54 @@ void	replace_content_by_index(t_stack **a, int *indexs)
 	}
 }
 
-t_monitoring medium_sorting(t_stack **a, t_stack **b, t_monitoring m) // chunks sorting
+static t_monitoring	next_value_to_top(t_stack **a, t_monitoring m,
+	int hold_first, int hold_second)
 {
-	int				*indexs;
-	int				n_chunks;
-	int				curr_chunk;
-	int				chunk_index;
+	if (stack_size(*a) - hold_second < hold_first)
+	{
+		while (stack_size(*a) - hold_second > 0)
+		{
+			m.n_rra += do_rr(a, 'a');
+			hold_second++;
+		}
+	}
+	else
+	{
+		while (hold_first > 0)
+		{
+			m.n_ra += do_r(a, 'a');
+			hold_first--;
+		}
+	}
+	return (m);
+}
+
+// chunks sorting
+t_monitoring	medium_sorting(t_stack **a, t_stack **b, t_monitoring m)
+{
+	int	*indexs;
+	int	n_chunks;
+	int	curr_chunk;
+	int	hold_first;
+	int	hold_second;
 
 	indexs = value_to_index(*a);
 	replace_content_by_index(a, indexs);
-	n_chunks = ft_sqrt(stack_size(*a));
+	n_chunks = ft_ceil_sqrt(stack_size(*a));
 	curr_chunk = 0;
-	chunk_index = 0;
-	while (curr_chunk < n_chunks && stack_size(*a) > 0)
+	while (curr_chunk < n_chunks)
 	{
-		if (chunk_index >= n_chunks - 1)
-		{
+		hold_first = find_value_in_chunk(*a, n_chunks * curr_chunk,
+				(n_chunks) * curr_chunk + n_chunks, TRUE);
+		if (hold_first == FAILURE)
 			curr_chunk++;
-			chunk_index = 0;
-		}
-		if ((*a)->content / n_chunks == curr_chunk)
-		{
-			m.n_pb += push(a, b);
-			chunk_index++;
-		}
 		else
-			m.n_ra += rotate(a);
+		{
+			hold_second = find_value_in_chunk(*a, n_chunks * curr_chunk,
+					n_chunks * curr_chunk + n_chunks, FALSE);
+			m = next_value_to_top(a, m, hold_first, hold_second);
+			m.n_pb += do_p(a, b, 'b');
+		}
 	}
-	m = chunks_sorting(a, b);
-	return (m);
+	return (free(indexs), selection_sorting_b(b, a, &find_max_index, m));
 }

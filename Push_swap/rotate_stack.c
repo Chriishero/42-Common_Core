@@ -6,7 +6,7 @@
 /*   By: cvillene <cvillene@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/25 06:02:04 by cvillene          #+#    #+#             */
-/*   Updated: 2025/12/02 07:06:19 by cvillene         ###   ########.fr       */
+/*   Updated: 2025/12/15 23:57:52 by cvillene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,33 +37,13 @@ int	rotate_ss(t_stack **a, t_stack **b)
 		return (0);
 	rotate(a);
 	rotate(b);
-	return (ft_printf("rr\n"), 1);
-}
-
-int	reverse_rotate(t_stack **s)
-{
-	t_stack	*curr;
-	t_stack	*last_prev;
-	t_stack	*last;
-
-	if (!s || !*s || !(*s)->next)
-		return (0);
-	curr = *s;
-	while (curr->next->next)
-		curr = curr->next;
-	last_prev = curr;
-	last = last_prev->next;
-	curr->next = NULL;
-	last->next = *s;
-	*s = last;
+	ft_printf_fd(1, "rr\n");
 	return (1);
 }
 
-int	reverse_rotate_ss(t_stack **a, t_stack **b)
+int	do_r(t_stack **s, char c)
 {
-	if (!a || !*a || !b || !*b)
-		return (0);
-	reverse_rotate(a);
-	reverse_rotate(b);
-	return (ft_printf("rrr\n"), 1);
+	if (c == 'a' || c == 'b')
+		ft_printf_fd(1, "r%c\n", c);
+	return (rotate(s));
 }

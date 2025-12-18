@@ -1,15 +1,13 @@
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
-SRCS = 	main.c \
-		check_args.c \
-		utils.c \
-		init_stack.c \
-		swap_stack.c \
-		push_stack.c \
-		rotate_stack.c \
+SRCS = 	main.c utils.c utils2.c \
+		check_args.c check_args2.c \
+		stack.c swap_stack.c push_stack.c rotate_stack.c reverse_rotate_stack.c \
+		benchmark.c \
+		sorting_utils.c medium_sorting.c simple_sorting.c complex_sorting.c \
 		push_swap.c
 OBJS = $(SRCS:.c=.o)
-NAME = Push_swap
+NAME = push_swap
 LIBFT = ./Libft/libft.a
 
 all: $(LIBFT) $(NAME)
@@ -18,8 +16,7 @@ $(LIBFT):
 	$(MAKE) -C ./Libft/
 
 $(NAME): $(OBJS)
-	cp $(LIBFT) $(NAME)
-	ar rcs $(NAME) $(OBJS)
+	$(CC) $(CFLAGS) -o $(NAME) $(OBJS) -L./Libft -lft
 
 %.o: %.c
 	$(CC) -c $(CFLAGS) $< -o $@ -I Libft/

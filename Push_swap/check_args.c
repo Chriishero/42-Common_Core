@@ -6,7 +6,7 @@
 /*   By: cvillene <cvillene@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/21 07:36:19 by cvillene          #+#    #+#             */
-/*   Updated: 2025/12/03 09:43:51 by cvillene         ###   ########.fr       */
+/*   Updated: 2025/12/17 23:32:28 by cvillene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,15 @@ int	check_number(char *nbr)
 	if (ft_atol(nbr) > INT_MAX || ft_atol(nbr) < INT_MIN)
 		return (FAILURE);
 	i = 0;
-	while (++i >= 0 && nbr[i])
+	if (nbr[i] == '-' || nbr[i] == '+')
 	{
-		if (((nbr[i] == '-' || nbr[i] == '+') && !ft_isdigit(nbr[i + 1]))
-			|| (nbr[i] != '-' && nbr[i] != '+' && !ft_isdigit(nbr[i])))
+		if (!ft_isdigit(nbr[i + 1]))
+			return (FAILURE);
+		i++;
+	}
+	while (i < ft_strlen(nbr))
+	{
+		if (!ft_isdigit(nbr[i]))
 			return (FAILURE);
 		i++;
 	}
@@ -33,53 +38,49 @@ int	check_list(char *list)
 {
 	char	**elements;
 	int		i;
-	int		k;
 
-	elements = ft_split(list, ' ');
+	if (ft_strchr(list, '\n'))
+		elements = ft_split(list, '\n');
+	else
+		elements = ft_split(list, ' ');
 	if (!elements)
 		return (FAILURE);
-	i = 0;
-	while (elements[i])
+	if (check_duplicate(elements) == FAILURE)
+		return (free_after_split(elements), FAILURE);
+	i = -1;
+	while (++i >= 0 && elements[i])
 	{
-		k = i + 1;
-		while (elements[k])
-		{
-			if (ft_atoi(elements[i]) == ft_atoi(elements[k]))
-				return (free_after_split(elements), FAILURE);
-			k++;
-		}
 		if (check_number(elements[i]) == FAILURE)
 			return (free_after_split(elements), FAILURE);
-		i++;
 	}
 	return (free_after_split(elements), SUCCESS);
 }
 
 int	check_modes(int argc, char **argv)
 {
-	int	i;
 	int	isbench;
-	int	isstrategy;
+	int	isstrat;
 
 	isbench = FALSE;
-	isstrategy = FALSE;
-	i = 0;
-	while (++i < argc)
+	isstrat = FALSE;
+	while (--argc > 0)
 	{
-		if (ft_strncmp(argv[i], "--simple", 9) == 0 && isstrategy == FALSE)
-			isstrategy = TRUE;
-		if (ft_strncmp(argv[i], "--medium", 9) == 0 && isstrategy == FALSE)
-			isstrategy = TRUE;
-		if (ft_strncmp(argv[i], "--complex", 10) == 0 && isstrategy == FALSE)
-			isstrategy = TRUE;
-		if (ft_strncmp(argv[i], "--adaptive", 10) == 0 && isstrategy == FALSE)
-			isstrategy = TRUE;
-		else if (ft_strncmp(argv[i], "--bench", 8) == 0 && isbench == FALSE)
+		if (are_strs_equals(argv[argc], "--simple") && isstrat == FALSE)
+			isstrat = TRUE;
+		else if (are_strs_equals(argv[argc], "--medium") && isstrat == FALSE)
+			isstrat = TRUE;
+		else if (are_strs_equals(argv[argc], "--complex")
+			&& isstrat == FALSE)
+			isstrat = TRUE;
+		else if (are_strs_equals(argv[argc], "--adaptive")
+			&& isstrat == FALSE)
+			isstrat = TRUE;
+		else if (are_strs_equals(argv[argc], "--bench") && isbench == FALSE)
 			isbench = TRUE;
-		else if (ft_strncmp(argv[i], "--", 2) == 0)
+		else if (ft_strncmp(argv[argc], "--", 2) == 0)
 			return (FAILURE);
 	}
-	if (isstrategy || isbench)
+	if (isstrat || isbench)
 		return (TRUE);
 	return (FALSE);
 }
@@ -100,20 +101,20 @@ void	check_args(int argc, char **argv)
 	if (!argv || !*argv)
 		error();
 	is_mode = check_modes(argc, argv);
-	if (is_mode == FAILURE)
+	if (is_mode == FAILURE
+		|| (check_duplicate(&argv[1]) == FAILURE))
 		error();
-	i = 1;
-	while (i < argc)
+	i = 0;
+	if (ft_strncmp(argv[argc - 1], "--", 2) == 0)
+		error();
+	while (++i < argc)
 	{
 		if (ft_strncmp(argv[i], "--", 2) != 0)
 		{
 			list = argv[i];
 			if (check_list(argv[i]) == FAILURE)
 				error();
-			if (is_mode == TRUE && i + 1 < argc)
-				error();
 		}
-		i++;
 	}
 	if (!list)
 		error();
